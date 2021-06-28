@@ -3,13 +3,27 @@ from tkinter import*
 root = Tk()
 root.title("Simple Calculator")
 
-
 Text_box = Entry(root, width = 45, borderwidth = 5)
 Text_box.grid(row = 0, column = 0, columnspan = 3)
 
 def button_click(number):
-    e.delete(0,END)
+    current = Text_box.get()
+    Text_box.delete(0,END)
+    Text_box.insert(0,str(current) + str(number))
 
+def button_clear():
+    Text_box.delete(0,END)
+
+def button_add():
+    global x
+    x = Text_box.get()
+    Text_box.delete(0,END)
+
+def button_equal():
+    y = Text_box.get()
+    Text_box.delete(0,END)
+    Sum = int(x) + int(y)
+    Text_box.insert(0,Sum)
 
 Button_7 = Button(root, text = "7",padx = 40, pady = 15, command = lambda: button_click(7))
 Button_7.grid(row = 1, column = 0)
@@ -41,13 +55,13 @@ Button_1.grid(row = 3, column = 0)
 Button_0 = Button(root, text = "0",padx = 40, pady = 15, command = lambda: button_click(0))
 Button_0.grid(row = 4, column = 0)
 
-Button_clear = Button(root, text = "Clear",padx = 78, pady = 15)
+Button_clear = Button(root, text = "Clear",padx = 78, pady = 15, command = button_clear)
 Button_clear.grid(row = 4, column = 1, columnspan = 2)
 
-Button_add = Button(root, text = "+",padx = 40, pady = 15)
+Button_add = Button(root, text = "+",padx = 40, pady = 15, command = button_add)
 Button_add.grid(row = 5, column = 0)
 
-Button_equal = Button(root, text = "=",padx = 88, pady = 15)
+Button_equal = Button(root, text = "=",padx = 88, pady = 15, command = button_equal)
 Button_equal.grid(row = 5, column = 1, columnspan = 2)
 
 root.mainloop()
