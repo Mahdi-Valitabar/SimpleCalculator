@@ -1,0 +1,128 @@
+### call tkinter from library 
+from tkinter import*
+
+root = Tk()
+root.title("Simple Calculator")
+
+### make a text box 
+Text_box = Entry(root, width = 30, borderwidth = 5)
+Text_box.grid(row = 0, column = 0, columnspan = 3)
+
+### define a function to enter correct digits 
+def button_click(number):
+    current = Text_box.get()
+    Text_box.delete(0,END)
+    Text_box.insert(0,str(current) + str(number))
+
+### define delete button 
+def button_clear():
+    Text_box.delete(0,END)
+
+### define add button 
+def button_add():
+    global x
+    global function
+    function = "add"
+    x = Text_box.get()
+    Text_box.delete(0,END)
+
+### define subtract button 
+def button_subtract():
+    global x
+    global function
+    function = "sub"
+    x = Text_box.get()
+    Text_box.delete(0,END)
+
+### define multiple button 
+def button_multiple():
+    global x
+    global function
+    function = "mul"
+    x = Text_box.get()
+    Text_box.delete(0,END)
+
+### define divide button 
+def button_divide():
+    global x
+    global function
+    function = "div"
+    x = Text_box.get()
+    Text_box.delete(0,END)
+
+### define equal button 
+def button_equal():
+    global x
+    global function
+    y = Text_box.get()
+    Text_box.delete(0,END)
+    if function == "add":
+        Sum = float(x) + float(y)
+        Text_box.insert(0,Sum)
+        x = 0
+    elif function == "sub":
+        Subtract = float(x) - float(y)
+        Text_box.insert(0,Subtract)
+        x = 0
+    elif function == "mul":
+        multiple = float(x) * float(y)
+        Text_box.insert(0,multiple)
+        x = 0
+    elif function == "div":
+        divide = float(x) / float(y)
+        Text_box.insert(0,divide)
+        x = 0
+
+### define and make numbers 
+Button_7 = Button(root, text = "7",padx = 30, pady = 20, command = lambda: button_click(7))
+Button_7.grid(row = 1, column = 0)
+
+Button_8 = Button(root, text = "8",padx = 30, pady = 20, command = lambda: button_click(8))
+Button_8.grid(row = 1, column = 1)
+
+Button_9 = Button(root, text = "9",padx = 30, pady = 20, command = lambda: button_click(9))
+Button_9.grid(row = 1, column = 2)
+
+Button_6 = Button(root, text = "6",padx = 30, pady = 20, command = lambda: button_click(6))
+Button_6.grid(row = 2, column = 2)
+
+Button_5 = Button(root, text = "5",padx = 30, pady = 20, command = lambda: button_click(5))
+Button_5.grid(row = 2, column = 1)
+
+Button_4 = Button(root, text = "4",padx = 30, pady = 20, command = lambda: button_click(4))
+Button_4.grid(row = 2, column = 0)
+
+Button_3 = Button(root, text = "3",padx = 30, pady = 20, command = lambda: button_click(3))
+Button_3.grid(row = 3, column = 2)
+
+Button_2 = Button(root, text = "2",padx = 30, pady = 20, command = lambda: button_click(2))
+Button_2.grid(row = 3, column = 1)
+
+Button_1 = Button(root, text = "1",padx = 30, pady = 20, command = lambda: button_click(1))
+Button_1.grid(row = 3, column = 0)
+
+Button_0 = Button(root, text = "0",padx = 30, pady = 20, command = lambda: button_click(0))
+Button_0.grid(row = 4, column = 1)
+
+Button_point = Button(root, text = ".",padx = 30, pady = 20, command = lambda: button_click("."))
+Button_point.grid(row = 4, column = 0)
+
+Button_equal = Button(root, text = "=",padx = 68, pady = 20, command = button_equal)
+Button_equal.grid(row = 5, column = 0, columnspan = 2)
+
+Button_clear = Button(root, text = "DEL",padx = 30, pady = 20, command = button_clear)
+Button_clear.grid(row = 1, column = 3)
+
+Button_multiple = Button(root, text = "*",padx = 35, pady = 20, command = button_multiple)
+Button_multiple.grid(row = 2, column = 3)
+
+Button_divide = Button(root, text = "/",padx = 35, pady = 20, command = button_divide)
+Button_divide.grid(row = 3, column = 3)
+
+Button_add = Button(root, text = "+",padx = 30, pady = 50, command = button_add)
+Button_add.grid(row = 4, column = 3, rowspan = 2)
+
+Button_subtract = Button(root, text = "-",padx = 30, pady = 50, command = button_subtract)
+Button_subtract.grid(row = 4, column = 2, rowspan = 2)
+
+root.mainloop()
